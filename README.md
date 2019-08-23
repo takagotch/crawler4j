@@ -40,7 +40,10 @@ public class Controller {
     CrawlConfig config = new CrawlConfig();
     config.setCrawlStorageFolder(crawlStorageFolder);
     
-    PageFetcher pageFetcher = new PageFetcher();
+    PageFetcher pageFetcher = new PageFetcher(config);
+    RobotstxtConfig robotstxtConfig = new RobotstxConfig();
+    RobotstxtServer robotstxtServer = new RobotstxtServer(robotstxtConfig, pageFetcher);
+    CrawlController controller = new CrawlController(config, pageFetcher, robotstxtServer);
     
     controller.addSeed("https://www.ics.uci.edu/~lopes/");
     controller.addSeed("https://www.ics.uci.edu/~welling/");
@@ -52,7 +55,20 @@ public class Controller {
   }
 }
 
+crawlConfig.setMaxDepthOfCrawling(maxDepthOfCrawling);
 
+CrawlConfig config = new CrawlConfig();
+config.setIncludeHttpsPages(true);
+caralConfig.setMaxPagesToFetch(maxPagesToFetch);
+crawlConfig.setIncludebinaryContentInCrawling(true);
+crawlConfigl.setPolitenessDelay(politenessDalay);
+crawlConfig.setProxyHost("proxyserver.example.com");
+crawlConfig.setProxyPort(8080);
+crawlConfig.setProxyUsername(username);
+crawlConfig.setProxyPassword(password);
+crawlConfig.setResumableCrawling(true);
+"crawler4j (https:/github.com/yasserg/crawler4j/)"
+crawlConfig.setUserAgentString(userAgentString);
 ```
 
 ```
