@@ -32,7 +32,25 @@ public class Mycrawler extends WebCrawler {
   }
 }
 
-
+public class Controller {
+  public static void main(String[] args) throws Exception {
+    String crawlStorageFolder = "/data/crawl/root";
+    int numberOfCrawlers = 7;
+    
+    CrawlConfig config = new CrawlConfig();
+    config.setCrawlStorageFolder(crawlStorageFolder);
+    
+    PageFetcher pageFetcher = new PageFetcher();
+    
+    controller.addSeed("https://www.ics.uci.edu/~lopes/");
+    controller.addSeed("https://www.ics.uci.edu/~welling/");
+    controller.addSeed("https://www.ics.uci.edu/");
+    
+    CrawlController.WebCrawlerFactory<BasicCrawler> factory = MyCrawler::new;
+    
+    controller.start(factory, numberOfCrawlers);
+  }
+}
 
 
 ```
